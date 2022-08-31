@@ -5,7 +5,8 @@ signal state_changed(state_key, substate)
 var persistent_store:PersistentStore
 var state: Dictionary = {
   "client_view": "",
-  "game": ""
+  "game": "",
+  "debug": true,
  }
 
 func start_game() -> void:
@@ -22,7 +23,10 @@ func set_state(state_key: String, new_state) -> void:
   print("State changed: ", state_key, " -> ", state[state_key])
   
 func _initialize():
-  set_state("client_view", ClientConstants.CLIENT_VIEW_SPLASH)
+  if state.debug:
+    set_state("client_view", ClientConstants.CLIENT_VIEW_NONE)
+  else:
+    set_state("client_view", ClientConstants.CLIENT_VIEW_SPLASH)
   set_state("game", GameConstants.GAME_OVER)
 
 func _ready():
