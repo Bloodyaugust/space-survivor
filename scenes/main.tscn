@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://views/FPS.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://views/Splash.gd" type="Script" id=6]
 [ext_resource path="res://actors/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/Drone.tscn" type="PackedScene" id=8]
+[ext_resource path="res://data/drones/bomber.tres" type="Resource" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ui_show"
@@ -58,6 +59,14 @@ tracks/1/keys = {
 [node name="Drones" type="Node2D" parent="."]
 
 [node name="Drone" parent="Drones" instance=ExtResource( 8 )]
+
+[node name="Drone2" parent="Drones" instance=ExtResource( 8 )]
+
+[node name="Drone3" parent="Drones" instance=ExtResource( 8 )]
+data = ExtResource( 9 )
+
+[node name="Drone4" parent="Drones" instance=ExtResource( 8 )]
+data = ExtResource( 9 )
 
 [node name="UIRoot" type="CanvasLayer" parent="."]
 

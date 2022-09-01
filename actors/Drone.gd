@@ -2,11 +2,13 @@ extends Node2D
 
 const PROJECTILE_SCENE: PackedScene = preload("res://actors/Projectile.tscn")
 
+export var animation_offset: Vector2
 export var data: Resource
 
+onready var _animation_player: AnimationPlayer = $"%AnimationPlayer"
+onready var _orbit_distance_offset: float = rand_range(60.0, 90.0)
 onready var _player_node: Node2D = get_tree().get_nodes_in_group("player_node")[0]
 
-var _animation_offset: Vector2
 var _time_to_activate: float = 0
 
 func _activate():
@@ -24,7 +26,14 @@ func _process(delta):
     _activate()
     _time_to_activate = data.cooldown
     
-  global_position = _player_node.global_position + _animation_offset
+  global_position = _player_node.global_position + (animation_offset * _orbit_distance_offset)
+
+  if data.follows_rotation:
+    look_at(get_global_mouse_position())
 
 func _ready():
+  _animation_player.add_animation("orbit", data.animation)
+  _animation_player.play("orbit")
+  _animation_player.seek(rand_range(0.0, 2.0), true)
+  
   _time_to_activate = data.cooldown

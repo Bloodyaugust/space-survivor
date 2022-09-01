@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://actors/Drone.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -19,33 +19,17 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 50 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "orbit"
-length = 2.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:_animation_offset")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 50 ), Vector2( 50, 0 ), Vector2( 0, -50 ), Vector2( -50, 0 ) ]
-}
-
 [node name="Drone" type="Node2D" groups=["drones"]]
 script = ExtResource( 1 )
+animation_offset = Vector2( -1, -1 )
 data = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.4, 0.4 )
+z_index = 1
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "orbit"
+unique_name_in_owner = true
 reset_on_save = false
 anims/RESET = SubResource( 1 )
-anims/orbit = SubResource( 2 )

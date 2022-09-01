@@ -1,12 +1,12 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://data/drone.gd" type="Script" id=1]
-[ext_resource path="res://data/orbits/angular_orbit.tres" type="Animation" id=2]
+[ext_resource path="res://data/orbits/circular_orbit.tres" type="Animation" id=2]
 
 [resource]
 script = ExtResource( 1 )
 animation = ExtResource( 2 )
-cooldown = 0.5
-follows_rotation = true
-name = "Fighter"
+cooldown = 1.5
+follows_rotation = false
+name = "Bomber"
 type = "attack"
