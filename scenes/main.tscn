@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://views/FPS.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://actors/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/Drone.tscn" type="PackedScene" id=8]
 [ext_resource path="res://data/drones/bomber.tres" type="Resource" id=9]
+[ext_resource path="res://actors/Unit.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ui_show"
@@ -163,3 +164,6 @@ stretch_mode = 6
 anims/ui_show = SubResource( 2 )
 
 [node name="BetterCam" parent="." instance=ExtResource( 5 )]
+
+[node name="Unit" parent="." instance=ExtResource( 10 )]
+position = Vector2( 355, -5 )
