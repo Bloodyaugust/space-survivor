@@ -17,6 +17,8 @@ func _activate():
 
   _new_projectile.global_position = global_position
   _new_projectile.global_rotation = global_rotation
+  
+  _new_projectile.data = data.projectile
 
   get_tree().get_root().add_child(_new_projectile)
 

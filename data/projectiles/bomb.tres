@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://data/projectile.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+aoe = 50.0
+attributes = "ballistic,explosive"
+damage = 5.0
+max_range = 100.0
+speed = 100.0

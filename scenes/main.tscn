@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://views/FPS.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://data/drones/bomber.tres" type="Resource" id=9]
 [ext_resource path="res://actors/Unit.tscn" type="PackedScene" id=10]
 [ext_resource path="res://views/TopHUD.gd" type="Script" id=11]
+[ext_resource path="res://data/drones/launcher.tres" type="Resource" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ui_show"
@@ -69,6 +70,9 @@ data = ExtResource( 9 )
 
 [node name="Drone4" parent="Drones" instance=ExtResource( 8 )]
 data = ExtResource( 9 )
+
+[node name="Drone5" parent="Drones" instance=ExtResource( 8 )]
+data = ExtResource( 12 )
 
 [node name="UIRoot" type="CanvasLayer" parent="."]
 

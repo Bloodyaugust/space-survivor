@@ -2,13 +2,13 @@
 
 [ext_resource path="res://data/drone.gd" type="Script" id=1]
 [ext_resource path="res://data/orbits/angular_orbit.tres" type="Animation" id=2]
-[ext_resource path="res://data/projectiles/bullet.tres" type="Resource" id=3]
+[ext_resource path="res://data/projectiles/missile.tres" type="Resource" id=3]
 
 [resource]
 script = ExtResource( 1 )
 animation = ExtResource( 2 )
-cooldown = 0.5
-follows_rotation = true
-name = "Fighter"
+cooldown = 2.0
+follows_rotation = false
+name = "Launcher"
 projectile = ExtResource( 3 )
 type = "attack"

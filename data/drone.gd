@@ -5,4 +5,5 @@ export var animation: Animation
 export var cooldown: float
 export var follows_rotation: bool
 export var name: String
+export var projectile: Resource
 export var type: String

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://data/projectile.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+aoe = 0.0
+attributes = "seeking"
+damage = 10.0
+max_range = 400.0
+speed = 300.0
