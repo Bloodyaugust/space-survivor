@@ -7,5 +7,5 @@ script = ExtResource( 1 )
 aoe = 0.0
 attributes = "seeking"
 damage = 10.0
-max_range = 400.0
+max_range = 500.0
 speed = 300.0

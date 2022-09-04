@@ -2,6 +2,7 @@ extends Control
 
 onready var _kills: Label = $"%Kills"
 onready var _level: Label = $"%Level"
+onready var _level_progress: ProgressBar = $"%LevelProgress"
 
 func _hide():
   visible = false
@@ -24,6 +25,9 @@ func _on_store_state_changed(state_key: String, substate):
 
     "level":
       _level.text = "%d" % substate
+
+    "level_progress":
+      _level_progress.value = substate
 
 func _ready():
   visible = false

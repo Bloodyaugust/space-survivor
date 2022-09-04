@@ -2,9 +2,11 @@ extends Node2D
 
 signal died
 
-const EXPERIENCE_PER_LEVEL: float = 100.0
 const HEALTH: float = 10.0
+const MAX_LEVEL: int = 100
 const MOVE_SPEED: float = 50.0
+
+export var experience_per_level: Curve
 
 onready var _experience_collector: Area2D = $"%ExperienceCollector"
 onready var _hitbox: Area2D = $"%Hitbox"
@@ -23,14 +25,17 @@ func damage(amount: float):
     emit_signal("died")
 
 func _on_experience_collected(experience: Node2D):
-  _experience += experience.get_meta("experience_amount", 0)
+  if experience:
+    var _experience_to_next_level: float = experience_per_level.interpolate(float(_level) / float(MAX_LEVEL))
+    _experience += experience.get_meta("experience_amount", 0)
 
-  if _experience >= EXPERIENCE_PER_LEVEL:
-    _experience -= EXPERIENCE_PER_LEVEL
-    _level += 1
-    Store.set_state("level", _level)
+    if _experience >= _experience_to_next_level:
+      _experience -= _experience_to_next_level
+      _level += 1
+      Store.set_state("level", _level)
 
-  experience.queue_free()
+    Store.set_state("level_progress", (_experience / experience_per_level.interpolate(float(_level) / float(MAX_LEVEL))) * 100)
+    experience.queue_free()
 
 func _on_experience_collector_area_entered(area: Area2D):
   var _parent: Node2D = area.get_parent()

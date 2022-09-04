@@ -9,6 +9,7 @@ var state: Dictionary = {
   "debug": true,
   "kills": 0,
   "level": 1,
+  "level_progress": 0,
  }
 
 func start_game() -> void:
