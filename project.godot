@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://data/projectile.gd"
 }, {
 "base": "Resource",
+"class": "RewardData",
+"language": "GDScript",
+"path": "res://data/reward.gd"
+}, {
+"base": "Resource",
 "class": "UnitData",
 "language": "GDScript",
 "path": "res://data/unit.gd"
@@ -33,6 +38,7 @@ _global_script_class_icons={
 "Drone": "",
 "PersistentStore": "",
 "ProjectileData": "",
+"RewardData": "",
 "UnitData": ""
 }
 
