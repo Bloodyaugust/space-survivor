@@ -1,14 +1,14 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://data/reward.gd" type="Script" id=1]
-[ext_resource path="res://data/drones/fighter.tres" type="Resource" id=2]
+[ext_resource path="res://data/drones/bomber.tres" type="Resource" id=2]
 
 [resource]
 script = ExtResource( 1 )
-description = "Fighter drones aim at your cursor and shoot low damage single target projectiles"
+description = "Bomber drones fire a slow-moving AOE damage bomb along a fixed trajectory"
 drone = ExtResource( 2 )
-key = "fighter-drone"
+key = "bomber-drone"
 level = 0
-name = "Fighter Drone"
+name = "Bomber Drone"
 type = "drone"
 repeatable = false

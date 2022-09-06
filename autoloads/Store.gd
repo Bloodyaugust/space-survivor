@@ -1,5 +1,6 @@
 extends Node
 
+signal reward_chosen(reward)
 signal state_changed(state_key, substate)
 
 var persistent_store:PersistentStore
@@ -10,6 +11,7 @@ var state: Dictionary = {
   "kills": 0,
   "level": 1,
   "level_progress": 0,
+  "rewards": [],
  }
 
 func start_game() -> void:

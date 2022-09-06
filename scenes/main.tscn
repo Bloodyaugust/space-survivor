@@ -76,6 +76,7 @@ data = ExtResource( 9 )
 data = ExtResource( 12 )
 
 [node name="UIRoot" type="CanvasLayer" parent="."]
+pause_mode = 2
 
 [node name="MainMenu" type="MarginContainer" parent="UIRoot"]
 anchor_left = 0.5

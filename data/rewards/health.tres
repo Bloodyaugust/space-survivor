@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://data/reward.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+description = "Heals you to full HP"
+key = "heal-all"
+level = 0
+name = "Heal"
+type = "consumable"
+repeatable = true

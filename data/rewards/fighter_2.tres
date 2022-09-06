@@ -5,10 +5,10 @@
 
 [resource]
 script = ExtResource( 1 )
-description = "Fighter drones aim at your cursor and shoot low damage single target projectiles"
+description = "Adds another fighter drone"
 drone = ExtResource( 2 )
 key = "fighter-drone"
-level = 0
+level = 1
 name = "Fighter Drone"
 type = "drone"
 repeatable = false

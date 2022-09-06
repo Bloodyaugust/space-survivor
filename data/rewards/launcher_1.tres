@@ -1,14 +1,14 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://data/reward.gd" type="Script" id=1]
-[ext_resource path="res://data/drones/fighter.tres" type="Resource" id=2]
+[ext_resource path="res://data/drones/launcher.tres" type="Resource" id=2]
 
 [resource]
 script = ExtResource( 1 )
-description = "Fighter drones aim at your cursor and shoot low damage single target projectiles"
+description = "Launcher drones fire a fast, seeking missile with high single-target damage"
 drone = ExtResource( 2 )
-key = "fighter-drone"
+key = "launcher-drone"
 level = 0
-name = "Fighter Drone"
+name = "Launcher Drone"
 type = "drone"
 repeatable = false
