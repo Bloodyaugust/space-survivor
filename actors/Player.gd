@@ -24,6 +24,9 @@ func damage(amount: float):
     Store.set_state("client_view", ClientConstants.CLIENT_VIEW_MAIN_MENU)
     emit_signal("died")
 
+func heal(amount: float):
+  _health = clamp(_health + amount, 0, HEALTH)
+
 func _on_experience_collected(experience: Node2D):
   if experience:
     var _experience_to_next_level: float = experience_per_level.interpolate(float(_level) / float(MAX_LEVEL))
@@ -46,6 +49,9 @@ func _on_experience_collector_area_entered(area: Area2D):
     _tween.tween_property(_parent, "global_position", global_position, 0.75)
     _tween.connect("finished", self, "_on_experience_collected", [_parent])
 
+func _on_reward_chosen(reward: RewardData):
+  RewardController.process_reward(self, get_tree().get_root().find_node("Drones", true, false), reward)
+
 func _process(delta):
   var _movement: Vector2 = Vector2.ZERO
 
@@ -56,3 +62,4 @@ func _process(delta):
 
 func _ready():
   _experience_collector.connect("area_entered", self, "_on_experience_collector_area_entered")
+  Store.connect("reward_chosen", self, "_on_reward_chosen")
