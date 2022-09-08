@@ -10,7 +10,7 @@ Vampire survivor clone, in space
 - [ ] Balance existing drones, add more drone levels
   - [ ] Alternating drone direction and relative position to player
   - [ ] Drone orbit speed/weapon activation time
-- [ ] Balance player and drone speed
+- [x] Balance player and drone speed
 - [ ] Restrict number of reward options shown
 - [ ] Close game loop
 - [ ] Add some vfx and sfx for hits/kills
