@@ -9,6 +9,7 @@ const MOVE_SPEED: float = 50.0
 export var experience_per_level: Curve
 
 onready var _experience_collector: Area2D = $"%ExperienceCollector"
+onready var _health_bar: ProgressBar = $"%HealthBar"
 onready var _hitbox: Area2D = $"%Hitbox"
 
 var _experience: float = 0.0
@@ -17,6 +18,7 @@ var _level: int = 1
 
 func damage(amount: float):
   _health -= amount
+  _health_bar.value = _health
 
   if _health <= 0:
     queue_free()
@@ -26,6 +28,7 @@ func damage(amount: float):
 
 func heal(amount: float):
   _health = clamp(_health + amount, 0, HEALTH)
+  _health_bar.value = _health
 
 func _on_experience_collected(experience: Node2D):
   if experience:
