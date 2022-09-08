@@ -1,8 +1,11 @@
 extends Node2D
 
 const EXPERIENCE_SCENE: PackedScene = preload("res://actors/Experience.tscn")
+const HEALTH_MODIFIER_SCALAR: float = 1.5
 
 export var data: Resource
+
+var difficulty_modifier: float = 0.0
 
 onready var _area2d: Area2D = $"%Area2D"
 onready var _player: Node2D = get_tree().get_nodes_in_group("player_node")[0]
@@ -51,4 +54,4 @@ func _ready():
   _area2d.connect("area_entered", self, "_on_area2d_area_entered")
   _player.connect("died", self, "_on_player_died")
 
-  _health = data.health
+  _health = data.health + (difficulty_modifier * HEALTH_MODIFIER_SCALAR)

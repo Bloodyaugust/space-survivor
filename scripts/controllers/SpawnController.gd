@@ -1,5 +1,6 @@
 extends Node
 
+const DIFFICULTY_TIMER_SCALAR: float = 0.05
 const SWARM_LEVEL_INTERVAL: int = 3
 const SWARM_TIMER_INTERVAL: float = 60.0
 const SWARM_UNIT_COUNT: int = 20
@@ -10,10 +11,14 @@ const UNIT_SCENE: PackedScene = preload("res://actors/Unit.tscn")
 const UNIT_SPAWN_INTERVAL: float = 2.5
 const UNIT_SPAWN_RANGE: float = 500.0
 
-var _swarm_spawn_timer: float = 0.0
+var _game_timer: float = 0.0
 var _player: Node2D
 var _spawning: bool = false
+var _swarm_spawn_timer: float = 0.0
 var _time_to_spawn: float = UNIT_SPAWN_INTERVAL
+
+func get_difficulty_modifier() -> float:
+  return _game_timer * DIFFICULTY_TIMER_SCALAR
 
 func _on_store_state_changed(state_key: String, substate):
   match state_key:
@@ -24,6 +29,7 @@ func _on_store_state_changed(state_key: String, substate):
           _spawning = true
         _:
           _spawning = false
+          _game_timer = 0.0
 
     "level":
       if substate % SWARM_LEVEL_INTERVAL == 0:
@@ -31,6 +37,7 @@ func _on_store_state_changed(state_key: String, substate):
 
 func _process(delta):
   if _spawning:
+    _game_timer += delta
     _swarm_spawn_timer += delta
     _time_to_spawn = clamp(_time_to_spawn - delta, 0, UNIT_SPAWN_INTERVAL)
 
