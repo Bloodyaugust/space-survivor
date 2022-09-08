@@ -28,3 +28,4 @@ Vampire survivor clone, in space
   - [ ] Bonus XP
   - [ ] Heal
   - [ ] Enemy clear
+  - [ ] Collect all experience

@@ -16,7 +16,10 @@ var state: Dictionary = {
 
 func start_game() -> void:
   set_state("client_view", ClientConstants.CLIENT_VIEW_NONE)
-  set_state("game", GameConstants.GAME_IN_PROGRESS)
+  set_state("game", GameConstants.GAME_STARTING)
+
+  yield(get_tree().create_timer(0.5), "timeout")
+  call_deferred("set_state", "game", GameConstants.GAME_IN_PROGRESS)
 
 func save_persistent_store() -> void:
   if ResourceSaver.save(ClientConstants.CLIENT_PERSISTENT_STORE_PATH, persistent_store) != OK:

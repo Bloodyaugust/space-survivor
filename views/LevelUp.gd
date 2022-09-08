@@ -32,6 +32,8 @@ func _get_allowed_rewards() -> Array:
   return _allowed_rewards
 
 func _hide():
+  get_tree().paused = false
+
   var _tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 
   _tween.tween_property(self, "rect_position", Vector2(rect_position.x, -1000), 0.25)
@@ -40,21 +42,14 @@ func _hide():
 
 func _on_store_state_changed(state_key: String, substate):
   match state_key:
+    "game":
+      if substate == GameConstants.GAME_IN_PROGRESS:
+        _show()
+
     "level":
-      var _allowed_rewards: Array = _get_allowed_rewards()
-
       _show()
-      get_tree().paused = true
-      GDUtil.queue_free_children(_rewards_container)
-
-      for _reward in _allowed_rewards:
-        var _new_reward_component: Control = REWARD_SCENE.instance()
-
-        _new_reward_component.data = _reward
-        _rewards_container.add_child(_new_reward_component)
 
     "rewards":
-      get_tree().paused = false
       _hide()
 
 func _ready():
@@ -68,7 +63,17 @@ func _ready():
   _hide()
 
 func _show():
+  get_tree().paused = true
   visible = true
+
+  var _allowed_rewards: Array = _get_allowed_rewards()
+  GDUtil.queue_free_children(_rewards_container)
+
+  for _reward in _allowed_rewards:
+    var _new_reward_component: Control = REWARD_SCENE.instance()
+
+    _new_reward_component.data = _reward
+    _rewards_container.add_child(_new_reward_component)
 
   var _tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 
