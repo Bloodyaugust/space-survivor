@@ -5,7 +5,7 @@ Vampire survivor clone, in space
 ## Todo
 
 - [x] Implement player level rewards and screen
-- [ ] Implement level and time threshold wave spawns
+- [x] Implement level and time threshold wave spawns
 - [ ] Scaling difficulty for units
 - [ ] Balance existing drones, add more drone levels
   - [ ] Alternating drone direction and relative position to player
