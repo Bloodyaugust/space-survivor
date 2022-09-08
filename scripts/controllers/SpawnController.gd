@@ -1,5 +1,7 @@
 extends Node
 
+const SWARM_LEVEL_INTERVAL: int = 3
+const SWARM_UNIT_COUNT: int = 20
 const UNIT_DATA: Array = [
   preload("res://data/units/basic_enemy.tres"),
 ]
@@ -20,6 +22,10 @@ func _on_store_state_changed(state_key: String, substate):
           _spawning = true
         _:
           _spawning = false
+
+    "level":
+      if substate % SWARM_LEVEL_INTERVAL == 0:
+        _spawn_swarm()
 
 func _process(delta):
   if _spawning:
@@ -42,3 +48,17 @@ func _process(delta):
 
 func _ready():
   Store.connect("state_changed", self, "_on_store_state_changed")
+
+func _spawn_swarm():
+  for _i in range(SWARM_UNIT_COUNT):
+    var _new_unit: Node2D = UNIT_SCENE.instance()
+
+    _new_unit.global_position = (
+      _player.global_position
+      + (
+        Vector2(rand_range(-1.0, 1.0), rand_range(-1.0, 1.0)).normalized()
+        * UNIT_SPAWN_RANGE
+      )
+    )
+    _new_unit.data = UNIT_DATA[randi() % UNIT_DATA.size()]
+    get_tree().get_root().add_child(_new_unit)
